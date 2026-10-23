@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Prashant Gupta</title>
+
+    <meta name="author" content="Prashant Gupta">
+    <meta name="description" content="Prashant Gupta, EECS undergraduate at IISER Bhopal working on control, estimation and multi-robot systems.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link previews (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content="Prashant Gupta">
+    <meta property="og:description" content="EECS undergraduate at IISER Bhopal working on control, estimation and multi-robot systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelpg.github.io/">
+    <!-- After you add images/profile.jpg, this preview image will work once hosted -->
+    <meta property="og:image" content="https://rebelpg.github.io/images/profile.jpg">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <script>
+      // Set the theme before the page paints, so there is no white flash in dark mode.
+      // Saved choice wins; otherwise follow the system setting.
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+
+  <body>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+
+    <div class="page">
+
+      <!-- ==================== INTRO ==================== -->
+      <table class="block"><tbody>
+        <tr>
+          <td class="intro-text">
+            <p class="name" style="text-align:center;">Prashant Gupta</p>
+            <p>
+              I'm an undergraduate in Electrical Engineering and Computer Science at
+              <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener">IISER Bhopal</a>.
+              I work on control and robotics: modelling and controlling mobile robots, building hardware from scratch,
+              and getting aerial and ground robots to work together.
+            </p>
+            <p>
+              I'm currently an undergraduate researcher at <strong>Moon Lab</strong>, IISER Bhopal, with Prof. P. B. Sujit,
+              where I lead the hardware side of our NIDAR multi-drone team and work on motion planning and off-road robot simulation.
+              Before that, I was a research intern at <a href="https://www.iitbhu.ac.in/" target="_blank" rel="noopener">IIT (BHU) Varanasi</a>
+              with Dr. Shyam Kamal, designing PID, LQR and MPC controllers and deploying them on a Quanser QBot.
+            </p>
+            <p>
+              <!-- TODO: edit this line to the exact role and start date you want -->
+              I'm currently <strong>looking for roles in robotics, drones and control</strong>. If you're hiring, <a href="mailto:pgnta.1385@gmail.com">email me</a>.
+            </p>
+            <p class="links">
+              <a href="mailto:pgnta.1385@gmail.com">Email</a> &nbsp;/&nbsp;
+              <a href="data/cv.pdf" target="_blank" rel="noopener">CV</a> &nbsp;/&nbsp;
+              <a href="https://github.com/rebelpg" target="_blank" rel="noopener">GitHub</a> &nbsp;/&nbsp;
+              <a href="https://www.linkedin.com/in/prashant7579" target="_blank" rel="noopener">LinkedIn</a>
+              <!-- TODO: once you create a Google Scholar profile, add:
+              &nbsp;/&nbsp; <a href="YOUR_SCHOLAR_LINK" target="_blank" rel="noopener">Scholar</a>
+              -->
+            </p>
+          </td>
+          <td class="intro-photo">
+            <img data-img="profile" alt="Photo of Prashant Gupta">
+          </td>
+        </tr>
+      </tbody></table>
+
+      <!-- ==================== NEWS ==================== -->
+      <table class="block"><tbody>
+        <tr>
+          <td class="section-head">
+            <h2>News</h2>
+            <ul class="news">
+              <li><strong>2026:</strong> Managing hardware for Moon Lab's team in the NIDAR autonomous multi-drone challenge (ongoing).</li>
+              <li><strong>Sep 2026:</strong> Our paper <em>COAST</em> was accepted at ACODS 2026.</li>
+              <li><strong>Aug 2026:</strong> Nominated for the UAV Modeling and Flight Control hands-on workshop at IIT Bombay (MeitY SwaYaan programme).</li>
+              <li><strong>May 2026:</strong> Joined Moon Lab, IISER Bhopal, as an undergraduate researcher with Prof. P. B. Sujit.</li>
+              <li><strong>Jun 2025:</strong> Research intern at IIT (BHU) Varanasi, Dept. of Electrical Engineering.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <!-- ==================== RESEARCH ==================== -->
+      <table class="block"><tbody>
+        <tr>
+          <td class="section-head">
+            <h2>Research</h2>
+            <p>
+              I'm interested in control, estimation and multi-robot systems, especially aerial-ground teams
+              where what a robot can see and how it moves are tightly coupled, and in motion planning for robots in the field.
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <table class="block list"><tbody>
+
+        <tr class="highlight-row">
+          <td class="thumb-cell thumb-wide">
+            <div class="one one-wide">
+              <div class="two" data-anim="coast_anim"></div>
+              <img data-img="coast" alt="UAV and UGV in the COAST Gazebo simulation">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">COAST: Altitude as a Coupled Perception Variable in Shared-Camera Aerial-Ground Tracking</span>
+            <br>
+            Shlok Mehndiratta, Divyam Sood, <strong>Prashant Gupta</strong>, Agniva Banerjee, Arijit Sen
+            <br>
+            <em>Advances in Control and Optimization of Dynamical Systems (ACODS)</em>, 2026
+            <br>
+            <!-- TODO: replace with real links after the camera-ready version, e.g.
+            <a href="data/coast.pdf" target="_blank" rel="noopener">paper</a> /
+            <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
+            -->
+            <span class="meta">paper coming soon</span>
+            <p>
+              A UAV's downward camera is the only sensor guiding a ground robot. Flying higher sees more of the path but
+              localizes more coarsely, so we derive in closed form the lowest altitude that keeps the path in view, which rises
+              with path curvature, and validate it in ROS 2/Gazebo.
+            </p>
+          </td>
+        </tr>
+
+      </tbody></table>
+
+      <!-- ==================== EXPERIENCE (timeline) ==================== -->
+      <table class="block"><tbody>
+        <tr><td class="section-head"><h2>Experience</h2></td></tr>
+      </tbody></table>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-date">2026 &ndash;</div>
+          <img class="tl-logo" src="images/logos/moonlab.png" alt="Moon Lab logo">
+          <div class="tl-text">
+            <span class="papertitle">Undergraduate Researcher</span>, Moon Lab, IISER Bhopal, with Prof. P. B. Sujit
+            <ul>
+              <li><strong>NIDAR drone challenge (ongoing):</strong> I manage the hardware section of our autonomous multi-drone search-and-rescue team.</li>
+              <li><strong>Drone hardware:</strong> build, integrate and flight test drones; configure, calibrate and tune Pixhawk 2.4.8 and 6C flight controllers in QGroundControl.</li>
+              <li><strong>Robocop (ongoing):</strong> built the mechanical chassis of a four-wheel ground robot: 3D modelling, cutting, drilling and grinding.</li>
+              <li>Built <a href="#prune-prm">Prune-PRM</a>, a faster motion planner, and an <a href="#atv-sim">off-road ATV simulation</a> that the lab uses as its testbed.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2025</div>
+          <img class="tl-logo" src="images/logos/iitbhu.png" alt="IIT (BHU) Varanasi logo">
+          <div class="tl-text">
+            <span class="papertitle">Research Intern</span>, Dept. of Electrical Engineering,
+            <a href="https://www.iitbhu.ac.in/" target="_blank" rel="noopener">IIT (BHU) Varanasi</a>, under Dr. Shyam Kamal
+            (<a href="https://drive.google.com/file/d/1dufrGVlph_Wl4TYnVtnpZn8y88wynDSZ/view?usp=drive_link" target="_blank" rel="noopener">report</a>)
+            <p>
+              Modelled differential-drive kinematics, then designed and benchmarked PID, LQR and MPC controllers in Python for
+              trajectory tracking. Deployed and tuned PID and LQR on Quanser QBot hardware, reducing steady-state error through
+              iterative gain tuning.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2023 &ndash;</div>
+          <img class="tl-logo" src="images/logos/iiserb.png" alt="IISER Bhopal logo">
+          <div class="tl-text">
+            <span class="papertitle">B.S. in Electrical Engineering and Computer Science</span>,
+            <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener">IISER Bhopal</a>
+            <p class="meta">
+              Coursework: Control Systems, Linear Control Systems, Signals &amp; Systems, Data Structures &amp; Algorithms,
+              Machine Learning, Linear Algebra, Intelligent Robotics (audited)
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== PROJECTS ==================== -->
+      <table class="block"><tbody>
+        <tr><td class="section-head"><h2>Projects</h2></td></tr>
+      </tbody></table>
+
+      <table class="block list"><tbody>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="nidar_anim"></div>
+              <img data-img="nidar" alt="Three NIDAR drones with transmitters and the ground control station at a field test">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">NIDAR: Autonomous Multi-Drone Search &amp; Aid Delivery</span>
+            <br>
+            <em>Pixhawk 2.4.8 / 6C, QGroundControl</em>, Moon Lab
+            <br>
+            <span class="meta">ongoing &middot; I manage the hardware section</span>
+            <p>
+              A team of autonomous drones that searches a 10-hectare flood zone, geotags up to 10 survivors and drops a 200&nbsp;g
+              aid kit near each one, with no external network and a 25&nbsp;kg limit on all drones combined. I build and integrate
+              the airframes and set up the flight controllers, including calibration, parameters and failsafes
+              (return-to-launch, low battery, geofence, kill switch).
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="robocop_anim"></div>
+              <img data-img="robocop" alt="Robocop four-wheel ground robot chassis, work in progress">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">Robocop: Four-Wheel Ground Robot</span>
+            <br>
+            <em>3D modelling, fabrication</em>, Moon Lab
+            <br>
+            <span class="meta">in progress &middot; chassis done, electronics next</span>
+            <p>
+              A rugged four-wheel ground robot on an aluminium-extrusion frame. I helped build the chassis from the CAD model
+              to the frame: 3D modelling, cutting sheet metal, drilling and grinding. This is a 4&ndash;5 month build;
+              I will add updates here as the electronics come together.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="prune_prm_anim"></div>
+              <img data-img="prune_prm" alt="Prune-PRM roadmap and planned path">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle" id="prune-prm">Prune-PRM: Faster Roadmap Planning by Batch Collision Pruning</span>
+            <br>
+            <em>Python, OMPL</em>, Moon Lab
+            <br>
+            <a href="https://github.com/rebelpg/prune-prm" target="_blank" rel="noopener">code</a>
+            <p>
+              A custom OMPL motion planner that prunes roadmap collisions in batches within a locality bound. On 1000-node
+              roadmaps it needs 3&ndash;5&times; fewer collision checks and plans 2.7&times; faster than classic PRM
+              (115&nbsp;ms vs. 312&nbsp;ms), benchmarked against PRM, PRM* and FMT* under identical conditions.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="atv_sim_anim"></div>
+              <img data-img="atv_sim" alt="Off-road ATV in a Gazebo terrain simulation">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle" id="atv-sim">Off-Road ATV Simulation</span>
+            <br>
+            <em>ROS 2, Gazebo, LiDAR, RGB-D, IMU</em>, Moon Lab
+            <p>
+              A simulated all-terrain vehicle with rough terrain, suspension and a full IMU, LiDAR and RGB-D sensor stack.
+              It serves as the lab's testbed for developing and testing off-road navigation controllers.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="pgnta_anim"></div>
+              <img data-img="pgnta" alt="PGNTA 17-DOF humanoid robot">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">PGNTA: 17-DOF Humanoid Robot</span>
+            <br>
+            <em>ESP32, PCA9685, MPU6050, servos</em>
+            <br>
+            <a href="https://rebelpg.github.io/project/" target="_blank" rel="noopener">project page</a>
+            <p>
+              A bipedal humanoid designed and built from scratch. An ESP32 coordinates 17 servos through a PCA9685 driver, with
+              an MPU6050 IMU for orientation feedback. Used to study gait sequences, stability and actuator synchronisation.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="uav_ugv_anim"></div>
+              <img data-img="uav_ugv" alt="UAV and UGV in a GPS-denied Gazebo simulation">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">GPS-Denied Autonomous Navigation (UAV&ndash;UGV)</span>
+            <br>
+            <em>ROS 2 Jazzy, Gazebo Harmonic, LiDAR, OpenCV</em>
+            <br>
+            <a href="https://drive.google.com/file/d/1C6FJxsMp0nhTv8jq8TF3dz5Blbg62f0S/view?usp=sharing" target="_blank" rel="noopener">details</a>
+            <p>
+              A simulation pipeline where a UAV finds targets and guides a ground robot without GPS. Targets are detected with
+              HSV segmentation and projected into 3D world coordinates using a pinhole camera model; RGB, LiDAR and odometry are
+              fused for more robust localisation.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="amr_anim"></div>
+              <img data-img="amr" alt="Autonomous mobile robot built at Mechamind Labs">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">Autonomous Mobile Robot (AMR)</span>
+            <br>
+            <em>ROS 2, Nav2, SLAM</em>, Mechamind Labs
+            <br>
+            <span class="meta">ongoing</span>
+            <p>
+              A full-stack AMR covering perception, control and navigation, with SLAM-based mapping and Nav2 path planning.
+              Subsystems are validated step by step in Gazebo before deployment on hardware.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="thumb-cell">
+            <div class="one">
+              <div class="two" data-anim="scout_anim"></div>
+              <img data-img="scout" alt="Scout surveillance ground robot">
+            </div>
+          </td>
+          <td class="text-cell">
+            <span class="papertitle">Scout: Surveillance UGV</span>
+            <br>
+            <em>ESP32, C++, WebSocket</em>
+            <br>
+            <a href="https://github.com/rebelpg/Scout" target="_blank" rel="noopener">code</a>
+            <p>
+              A low-cost differential-drive ground robot with real-time teleoperation from a web page over WebSocket,
+              including manual override and live sensor readings.
+            </p>
+          </td>
+        </tr>
+
+      </tbody></table>
+
+      <!-- ==================== SKILLS ==================== -->
+      <table class="block"><tbody>
+        <tr><td class="section-head"><h2>Skills</h2></td></tr>
+      </tbody></table>
+
+      <dl class="skills">
+        <dt>Drones</dt>
+        <dd>Pixhawk 2.4.8 &amp; 6C, QGroundControl &middot; airframe build and integration, sensor calibration, parameter tuning, failsafes, field flight testing</dd>
+
+        <dt>Robotics</dt>
+        <dd>ROS 2 (Jazzy), Gazebo Harmonic, Nav2, SLAM, OMPL, RViz</dd>
+
+        <dt>Control</dt>
+        <dd>PID, LQR, MPC, differential-drive kinematics, state machines</dd>
+
+        <dt>Embedded</dt>
+        <dd>ESP32, Arduino, PCA9685, MPU6050, ultrasonic/IR sensors, WebSocket teleoperation</dd>
+
+        <dt>Mechanical</dt>
+        <dd>Fusion 360, AutoCAD &middot; chassis fabrication: cutting, drilling, grinding</dd>
+
+        <dt>Software</dt>
+        <dd>C, C++, Python, NumPy, scikit-learn, TensorFlow, Git, Docker, Linux</dd>
+      </dl>
+
+      <!-- ==================== LEADERSHIP & COMMUNITY ==================== -->
+      <table class="block"><tbody>
+        <tr><td class="section-head"><h2>Leadership &amp; Community</h2></td></tr>
+      </tbody></table>
+
+      <div class="timeline timeline-compact">
+
+        <div class="tl-item">
+          <div class="tl-date">Aug 2026</div>
+          <div class="tl-text">
+            <span class="papertitle">Nominated: UAV Modeling and Flight Control, a Hands-on Workshop</span>
+            <br>
+            <span class="meta">IIT Bombay, under MeitY &middot; 07&ndash;08 Aug 2026</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2025</div>
+          <div class="tl-text">
+            <span class="papertitle">ROSCon India 2025</span>
+            <br>
+            <span class="meta">COEP Pune &middot; humanoid robotics workshop, NVIDIA Isaac Sim session</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2025</div>
+          <div class="tl-text">
+            <span class="papertitle">Organiser, Throttle-X</span>, the first RC car race at IISER Bhopal
+            <br>
+            <span class="meta">Core member, CNC club, IISER Bhopal</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2024 &ndash; 25</div>
+          <div class="tl-text">
+            <span class="papertitle">Founding Member &amp; Coordinator, EECS Club</span>, IISER Bhopal
+            <br>
+            <span class="meta">Organised <em>Latency &rsquo;25</em>, the club&rsquo;s fest, and an Arduino &amp; IoT workshop</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== FOOTER ==================== -->
+      <p class="footer">
+        Website design from <a href="https://github.com/jonbarron/jonbarron_website" target="_blank" rel="noopener">Jon Barron's source code</a>.
+        Last updated October 2026.
+      </p>
+
+    </div>
+
+    <script>
+      // Dark mode toggle: flip the theme and remember the choice.
+      document.querySelector('.theme-toggle').addEventListener('click', function () {
+        var root = document.documentElement;
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+
+      // Loads images/<name> with whatever extension you saved it as (jpg, png, gif, webp...).
+      // If no file is found, a labelled placeholder is shown instead.
+      var EXTS = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'JPG', 'JPEG', 'PNG'];
+
+      document.querySelectorAll('img[data-img]').forEach(function (img) {
+        var base = img.getAttribute('data-img');
+        var candidates = [];
+        ['images/', 'images/placeholders/'].forEach(function (dir) {
+          EXTS.forEach(function (ext) { candidates.push(dir + base + '.' + ext); });
+        });
+        var i = 0;
+        img.onerror = function () {
+          i++;
+          if (i < candidates.length) img.src = candidates[i];
+          else img.onerror = null;
+        };
+        img.src = candidates[0];
+      });
+
+      // Optional hover animation: if images/<name>_anim.gif (or .webp) exists,
+      // it fades in over the still image when you hover the row.
+      var ANIM_EXTS = ['gif', 'webp', 'GIF'];
+      var ANIM_DIRS = ['images/', 'images/placeholders/'];
+      document.querySelectorAll('.two[data-anim]').forEach(function (box) {
+        var base = box.getAttribute('data-anim');
+        var probe = new Image();
+        var names = [base];
+        if (base.endsWith('_anim')) names.push(base.slice(0, -5));
+        var candidates = [];
+        names.forEach(function (name) {
+          ANIM_DIRS.forEach(function (dir) {
+            ANIM_EXTS.forEach(function (ext) {
+              candidates.push(dir + name + '.' + ext);
+            });
+          });
+        });
+        var i = 0;
+        probe.onload = function () {
+          probe.alt = '';
+          box.appendChild(probe);
+          box.classList.add('ready');
+        };
+        probe.onerror = function () {
+          i++;
+          if (i < candidates.length) probe.src = candidates[i];
+        };
+        probe.src = candidates[0];
+      });
+    </script>
+  </body>
+</html>
