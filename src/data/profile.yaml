@@ -1,0 +1,31 @@
+# Intro section and site-wide info. Text fields may contain HTML (<a>, <strong>, <em>).
+name: Prashant Gupta
+description: EECS undergraduate at IISER Bhopal working on drones, control and multi-robot systems.
+email: pgnta.1385@gmail.com
+cv: /data/cv.pdf   # PDF for the Download button on /cv/ (the no-phone build of resume.tex)
+photoAlt: Photo of Prashant Gupta
+intro:
+  - >-
+    I'm an Electrical Engineering and Computer Science undergraduate at
+    <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener">IISER Bhopal</a>.
+    I build robots end to end, from CAD and fabrication to electronics, control and simulation,
+    with a focus on aerial and ground robots that work as a team.
+  - >-
+    At <strong>Moon Lab</strong>, IISER Bhopal, with Prof. P. B. Sujit, I lead the hardware for our NIDAR
+    autonomous multi-drone team: airframe builds, Pixhawk setup and field flight tests. I also work on motion
+    planning and off-road robot simulation. Before that, at
+    <a href="https://www.iitbhu.ac.in/" target="_blank" rel="noopener">IIT (BHU) Varanasi</a> with Dr. Shyam Kamal,
+    I designed PID and LQR controllers, deployed them on a Quanser QBot, and formulated an MPC controller.
+  - >-
+    I'm <strong>applying to MS/PhD programmes in robotics and control</strong>, and I'm open to research and
+    industry roles. <a href="mailto:pgnta.1385@gmail.com">Get in touch</a>.
+links:
+  - { label: Email, href: "mailto:pgnta.1385@gmail.com" }
+  - { label: CV, href: /cv/ }
+  - { label: GitHub, href: "https://github.com/rebelpg" }
+  - { label: LinkedIn, href: "https://www.linkedin.com/in/prashant7579" }
+  # TODO: once you create a Google Scholar profile:
+  # - { label: Scholar, href: "YOUR_SCHOLAR_LINK" }
+research: >-
+  I'm interested in control, estimation and multi-robot systems, especially aerial-ground teams
+  where what a robot can see and how it moves are tightly coupled, and in motion planning for robots in the field.

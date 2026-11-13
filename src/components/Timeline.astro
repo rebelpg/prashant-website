@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { ExperienceItem } from '../lib/data';
+
+interface Props { items: ExperienceItem[] }
+
+const { items } = Astro.props;
+const logos = import.meta.glob<{ default: ImageMetadata }>('../assets/logos/*', { eager: true });
+const logo = (file: string) => {
+  const found = logos[`../assets/logos/${file}`];
+  if (!found) throw new Error(`Logo not found: src/assets/logos/${file}`);
+  return found.default;
+};
+---
+
+<div class="timeline">
+  {items.map((it) => (
+    <div class="tl-item">
+      <div class="tl-date" set:html={it.date} />
+      <Image class="tl-logo" src={logo(it.logo)} alt={it.logoAlt} height={128} />
+      <div class="tl-text">
+        {it.page
+          ? <a href={`/experience/${it.page}/`}><span class="papertitle">{it.title}</span></a>
+          : <span class="papertitle">{it.title}</span>}, <Fragment set:html={it.org} />
+        {it.bullets && <ul>{it.bullets.map((b) => <li set:html={b} />)}</ul>}
+        {it.text && <p set:html={it.text} />}
+        {it.meta && <p class="meta" set:html={it.meta} />}
+        {it.page && <a href={`/experience/${it.page}/`}>more &rarr;</a>}
+      </div>
+    </div>
+  ))}
+</div>

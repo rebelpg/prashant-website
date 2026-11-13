@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { LeadershipGroup } from '../lib/data';
+
+// media = false (home page): text only. The section title links to /community/.
+// media = true (/community/): photos and videos shown in full.
+interface Props { groups: LeadershipGroup[]; media?: boolean }
+const { groups, media = false } = Astro.props;
+// Anchor id from the title, e.g. "Organiser, Throttle-X" -> "organiser-throttle-x"
+const slug = (title: string) =>
+  title.replace(/<[^>]+>|&[a-z]+;/g, ' ').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/leadership/*', { eager: true });
+const photo = (file: string) => {
+  const found = photos[`../assets/leadership/${file}`];
+  if (!found) throw new Error(`Photo not found: src/assets/leadership/${file}`);
+  return found.default;
+};
+---
+
+<div class="lead">
+  {groups.map((g) => (
+    <section class="lead-group">
+      <h3 class="group-label">{g.heading}</h3>
+      <ul class="lead-list">
+        {g.items.map((it) => (
+          <li id={media ? slug(it.title) : undefined}>
+            <div class="lead-row">
+              <span><span class="papertitle" set:html={it.title} />{it.detail && <>, <Fragment set:html={it.detail} /></>}</span>
+              <span class="lead-date" set:html={it.date} />
+            </div>
+            {it.meta && <div class="meta" set:html={it.meta} />}
+            {it.links.length > 0 && (
+              <div>
+                {it.links.map((l, i) => (
+                  <>
+                    {i > 0 && ' / '}
+                    <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+                  </>
+                ))}
+              </div>
+            )}
+            {media && (it.photo || it.video) && <div class="lead-media">
+            {it.photo && (
+              <figure class="lead-photo">
+                <Image src={photo(it.photo.file)} alt={it.photo.alt} height={440} />
+                {it.photo.caption && <figcaption>{it.photo.caption}</figcaption>}
+              </figure>
+            )}
+            {it.video && (
+              <figure class="lead-photo">
+                <video
+                  src={it.video.src}
+                  poster={photo(it.video.poster).src}
+                  width={photo(it.video.poster).width}
+                  height={photo(it.video.poster).height}
+                  controls muted playsinline preload="none"
+                />
+                {it.video.caption && <figcaption>{it.video.caption}</figcaption>}
+              </figure>
+            )}
+            </div>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>

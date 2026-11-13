@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import DetailPage from '../../components/DetailPage.astro';
+import { hasPage } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  const all = await getCollection('projects', (e) => e.data.kind !== 'experience');
+  return all.filter(hasPage).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+---
+
+<DetailPage entry={Astro.props.entry} />

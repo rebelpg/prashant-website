@@ -1,0 +1,16 @@
+---
+import type { SkillGroup } from '../lib/data';
+
+interface Props { groups: SkillGroup[] }
+const { groups } = Astro.props;
+---
+
+<!-- One row per group: label on the left, skills as plain comma-separated text on the right -->
+<dl class="skills">
+  {groups.map((g) => (
+    <div class="skill-row">
+      <dt class="papertitle">{g.label}</dt>
+      <dd>{g.tags.join(', ')}</dd>
+    </div>
+  ))}
+</dl>

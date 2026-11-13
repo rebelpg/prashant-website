@@ -1,10 +1,17 @@
 {
   "name": "prashant-website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Prashant Gupta: personal website (static, Jon Barron template)",
+  "type": "module",
+  "description": "Prashant Gupta: personal website (Astro)",
   "scripts": {
-    "start": "node serve.js",
-    "dev": "node serve.js --open"
+    "dev": "astro dev",
+    "start": "astro dev --open",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "7.3.8",
+    "yaml": "2.9.1"
   }
 }

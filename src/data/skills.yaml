@@ -1,0 +1,16 @@
+# One row per group: label on the left, tags as comma-separated text on the right.
+# Only list what a project on this site shows. No version numbers. Put quotes around a tag that contains ": ".
+- label: Robotics
+  tags: [ROS 2, Gazebo, Nav2, SLAM, AMCL, ros2_control, URDF / xacro, RViz]
+- label: Control & planning
+  tags: [PID, LQR, MPC, mobile-robot kinematics, sampling-based motion planning (OMPL), state machines]
+- label: Perception
+  tags: [OpenCV, LiDAR, camera models and frame transforms, sensor fusion]
+- label: Drones
+  tags: [Pixhawk, ArduPilot, PX4, QGroundControl, airframe integration, flight testing]
+- label: Embedded
+  tags: [ESP32, Arduino, I2C, PWM, motor drivers, IMU and range sensors, soldering and wiring]
+- label: Fabrication
+  tags: [Fusion 360, AutoCAD, FDM 3D printing, CNC laser cutting, metalwork]
+- label: Programming
+  tags: [Python, C++, C, NumPy, SciPy, scikit-learn, Git, Linux, Docker]

@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import Timeline from '../components/Timeline.astro';
+import LeadershipList from '../components/LeadershipList.astro';
+import SkillsList from '../components/SkillsList.astro';
+import OtherProjects from '../components/OtherProjects.astro';
+import { profile, news, experience, skills, leadership } from '../lib/data';
+
+const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const papers = all.filter((p) => p.data.kind === 'paper');
+const projects = all.filter((p) => p.data.kind === 'project' && p.data.featured);
+const otherProjects = all.filter((p) => p.data.kind === 'project' && !p.data.featured);
+---
+
+<Base>
+  <!-- Intro -->
+  <table class="block"><tbody>
+    <tr>
+      <td class="intro-text">
+        <p class="name" style="text-align:center;">{profile.name}</p>
+        {profile.intro.map((para) => <p set:html={para} />)}
+        <p class="links">
+          {profile.links.map((l, i) => (
+            <>
+              {i > 0 && <Fragment set:html=" &nbsp;/&nbsp; " />}
+              <a href={l.href} {...(l.href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener' })}>{l.label}</a>
+            </>
+          ))}
+        </p>
+      </td>
+      <td class="intro-photo">
+        <img src="/profile.jpg" alt={profile.photoAlt} width="400" height="400" />
+      </td>
+    </tr>
+  </tbody></table>
+
+  <SectionHead title="News">
+    <ul class="news">
+      {news.map((n) => <li><strong>{n.date}:</strong> <Fragment set:html={n.text} /></li>)}
+    </ul>
+  </SectionHead>
+
+  <SectionHead title="Research" id="research">
+    <p set:html={profile.research} />
+  </SectionHead>
+  <table class="block list"><tbody>
+    {papers.map((entry) => <ProjectRow entry={entry} />)}
+  </tbody></table>
+
+  <SectionHead title="Experience" id="experience" />
+  <Timeline items={experience} />
+
+  <SectionHead title="Projects" id="projects" />
+  <table class="block list"><tbody>
+    {projects.map((entry) => <ProjectRow entry={entry} />)}
+  </tbody></table>
+
+  <SectionHead title="Other projects" id="other-projects" />
+  <OtherProjects entries={otherProjects} />
+
+  <SectionHead title="Skills" id="skills" />
+  <SkillsList groups={skills} />
+
+  <SectionHead title="Leadership & Community" id="leadership" more={{ href: '/community/', label: 'photos & videos' }} />
+  <LeadershipList groups={leadership} />
+</Base>

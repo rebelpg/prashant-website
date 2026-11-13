@@ -1,0 +1,97 @@
+---
+// Full page for one entry of the projects collection (a project, paper or experience).
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { youtubeEmbed } from '../lib/projects';
+
+interface Props { entry: CollectionEntry<'projects'> }
+
+const BACK = {
+  paper: { href: '/#research', label: 'All projects' },
+  project: { href: '/#projects', label: 'All projects' },
+  experience: { href: '/#experience', label: 'All experience' },
+};
+
+const { entry } = Astro.props;
+const p = entry.data;
+const { Content } = await render(entry);
+const embed = p.video ? youtubeEmbed(p.video.href) : undefined;
+---
+
+<Base title={`${p.title} | Prashant Gupta`} description={p.summary.replace(/<[^>]+>|&[a-z]+;/g, ' ')}>
+  <article class="project-page">
+    <a class="back" href={BACK[p.kind].href}>&larr; {BACK[p.kind].label}</a>
+    <h1>{p.title}</h1>
+    {p.authors && <div set:html={p.authors} />}
+    {p.venue && <div><em>{p.venue}</em></div>}
+    {p.stack && <div><em>{p.stack}</em>{p.org && `, ${p.org}`}</div>}
+    {p.status && <div class="meta">{p.status}</div>}
+    {p.links.length > 0 && (
+      <div>
+        {p.links.map((l, i) => (
+          <>
+            {i > 0 && ' / '}
+            <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+          </>
+        ))}
+      </div>
+    )}
+    <p class="summary" set:html={p.description ?? p.summary} />
+
+    {p.steps.length > 0 && (
+      <div class="timeline timeline-compact project-steps">
+        {p.steps.map((s) => (
+          <div class="tl-item">
+            <div class="tl-date">{s.label}</div>
+            <div class="tl-text">
+              <span class="papertitle">{s.title}</span>
+              <p set:html={s.text} />
+              {s.gif && (
+                <figure>
+                  <img src={s.gif.src} alt={s.gif.alt} loading="lazy" />
+                  {s.gif.caption && <figcaption>{s.gif.caption}</figcaption>}
+                </figure>
+              )}
+              {s.video && (
+                <figure>
+                  <video src={s.video.src} poster={s.video.poster} controls muted playsinline preload="none" />
+                  {s.video.caption && <figcaption>{s.video.caption}</figcaption>}
+                </figure>
+              )}
+              {s.images.map((img) => (
+                <figure>
+                  <Image src={img.src} alt={img.alt} width={1200} />
+                  {img.caption && <figcaption>{img.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="project-body">
+      <Content />
+    </div>
+
+    {p.video && (
+      <section class="project-video">
+        {embed && (
+          <div class:list={['video-frame', { vertical: embed.vertical }]}>
+            <iframe
+              src={embed.src}
+              title={p.video.label}
+              loading="lazy"
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+        <a href={p.video.href} target="_blank" rel="noopener">&#9654; {p.video.label}</a>
+      </section>
+    )}
+  </article>
+</Base>

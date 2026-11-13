@@ -1,0 +1,206 @@
+---
+// Web version of the resume. Keep it in step with resume.tex (outside this repo, in ../resume/).
+// The phone number is left out on purpose: this page is public.
+// The PDF button shows only when public/data/cv.pdf exists (the no-phone build of resume.tex).
+import Base from '../layouts/Base.astro';
+import CvEntry, { type Entry } from '../components/CvEntry.astro';
+import { profile, hasCv } from '../lib/data';
+
+const education: Entry[] = [
+  {
+    title: 'Indian Institute of Science Education and Research (IISER) Bhopal',
+    date: 'Aug 2023 – Present',
+    sub: 'BS in Engineering Sciences, Major in Electrical Engineering &amp; Computer Science | CGPA: 7.43/10',
+    place: 'Bhopal, MP',
+    bullets: [
+      '<strong>Coursework:</strong> Control Systems, Linear Control Systems, Signals &amp; Systems, Optimization Techniques, Machine Learning, Data Structures &amp; Algorithms, Linear Algebra',
+    ],
+  },
+  {
+    title: 'Rani Laxmi Bai Memorial School',
+    date: '2020 – 2022',
+    sub: 'CBSE Class XII: 90.2% | Class X: 95.0%',
+    place: 'Lucknow, UP',
+  },
+];
+
+const research: Entry[] = [
+  {
+    title: 'Undergraduate Researcher, Moon Lab, IISER Bhopal',
+    date: 'May 2026 – Present',
+    sub: 'Advisor: Prof. P. B. Sujit',
+    place: 'Bhopal, MP',
+    bullets: [
+      '<strong>NIDAR multi-drone challenge:</strong> lead the team’s hardware for autonomous flood search and aid delivery: airframe builds, Pixhawk setup (ArduPilot, PX4), failsafes and field flight tests.',
+      '<strong>Off-road ATV:</strong> built the lab’s ROS&nbsp;2 + Gazebo testbed (rough terrain, suspension, IMU, LiDAR, RGB-D); now implementing an MPPI controller for unstructured terrain.',
+    ],
+  },
+  {
+    title: 'Perception-Aware Altitude Optimisation for Aerial-Ground Tracking',
+    date: 'Jan 2026 – Jul 2026',
+    sub: 'Undergraduate Researcher, Advisor: Dr. Arijit Sen, IISER Bhopal',
+    place: 'Bhopal, MP',
+    bullets: [
+      'Treated UAV altitude as a control variable in shared-camera UAV–UGV tracking (coverage vs. localisation noise <em>R</em> ∝ <em>z</em><sup>2</sup>); derived a closed-form, curvature-scheduled altitude policy.',
+      'Co-designed a belief-space ground controller and an event-triggered aerial planner: <strong>24.9× fewer planner solves</strong> at the same estimation quality. <strong>My part:</strong> the ROS&nbsp;2/Gazebo testbed and experiments, result analysis and paper writing.',
+    ],
+  },
+  {
+    title: 'Summer Research Intern, Dept. of Electrical Engineering, IIT (BHU) Varanasi',
+    date: 'Jun 2025 – Jul 2025',
+    sub: 'Advisor: Dr. Shyam Kamal',
+    place: 'Varanasi, UP',
+    bullets: [
+      'Modelled differential-drive kinematics; wrote PID and LQR trajectory-tracking controllers in Python and tuned them on Quanser QBot hardware; formulated a constrained MPC controller.',
+    ],
+    links: [{ label: 'details', href: '/experience/iit-bhu-internship/' }],
+  },
+];
+
+const projects: Entry[] = [
+  {
+    title: 'Event-Triggered Tube MPC for a Crazyflie Quadrotor',
+    date: '',
+    sub: 'ROS&nbsp;2, CrazySim SITL, CVXPY, Docker',
+    bullets: [
+      'Course project (team): tube MPC with an mRPI safety tube that re-solves the QP only near the tube boundary: <strong>84–93% fewer QP solves</strong> than standard MPC, <strong>zero constraint violations</strong> under wind, payload-drop, gust and sensor-glitch tests.',
+      '<strong>My part:</strong> integrated CrazySim, firmware SITL and the MPC into one ROS&nbsp;2 + Gazebo + RViz pipeline; wrote a direct CFLib bridge; shipped a one-command Docker demo.',
+    ],
+    links: [
+      { label: 'details', href: '/projects/tube-mpc/' },
+      { label: 'GitHub', href: 'https://github.com/MUlti-agent-SImulation-and-Control-Lab/LCS-334-434-684/tree/main/Project/Shlok_23309%2C%20Divyam_23112%2C%20Prashant_23237/02_Trajectory_Engineering' },
+      { label: 'Docker', href: 'https://hub.docker.com/r/rebelpg/crazysim_et_mpc/tags' },
+    ],
+  },
+  {
+    title: 'Prune-PRM: Roadmap Planning by Batch Collision Pruning',
+    date: '',
+    sub: 'Python, OMPL, NumPy',
+    bullets: [
+      'Builds the roadmap blind and prunes collisions in one batch; a locality bound proves most edges safe: <strong>3–5× fewer collision tests</strong>, identical roadmap. Native OMPL planner, benchmarked against PRM, PRM* and FMT*.',
+    ],
+    links: [
+      { label: 'details', href: '/projects/prune-prm/' },
+      { label: 'GitHub', href: 'https://github.com/rebelpg/prune-prm' },
+    ],
+  },
+  {
+    title: 'Mechabot: Autonomous Mobile Robot',
+    date: '',
+    sub: 'ROS&nbsp;2, Gazebo, slam_toolbox, Nav2',
+    bullets: [
+      'Full ROS&nbsp;2 stack from URDF to ros2_control, SLAM, AMCL and Nav2; an autonomous QR-code maze solver (camera + LiDAR + IMU state machine) in Gazebo.',
+    ],
+    links: [{ label: 'details', href: '/projects/amr/' }],
+  },
+  {
+    title: 'GPS-Denied UAV–UGV Fire Rescue',
+    date: '',
+    sub: 'ROS&nbsp;2, Gazebo, OpenCV, LiDAR',
+    bullets: [
+      'Course project (team): a drone finds fires with its camera and guides a ground robot to each; <strong>my part:</strong> the simulations and the ground robot’s state machine and PD control.',
+    ],
+    links: [{ label: 'details', href: '/projects/uav-ugv/' }],
+  },
+  {
+    title: 'Embedded Robot Builds',
+    date: '',
+    sub: 'ESP32, PCA9685, MPU6050, L298N, C++',
+    bullets: [
+      '<strong>PGNTA:</strong> 17-servo humanoid designed and built from scratch. <strong>Scout:</strong> ground robot with web control and an RC override.',
+    ],
+    links: [
+      { label: 'PGNTA', href: '/projects/pgnta/' },
+      { label: 'Scout', href: '/projects/scout/' },
+    ],
+  },
+];
+
+const skills: [string, string][] = [
+  ['Robotics', 'ROS 2, Gazebo, Nav2, SLAM, AMCL, ros2_control, URDF/xacro, RViz, OMPL'],
+  ['Control &amp; Planning', 'PID, LQR, MPC, Tube MPC, event-triggered control, MPPI, sampling-based motion planning'],
+  ['Perception', 'OpenCV, LiDAR, camera models and frame transforms, sensor fusion'],
+  ['Hardware', 'Pixhawk, ArduPilot, PX4, QGroundControl, ESP32, Arduino, Fusion 360, 3D printing, CNC laser cutting'],
+  ['Programming', 'Python, C++, C, NumPy, SciPy, CVXPY, scikit-learn, Git, Linux, Docker'],
+];
+
+const leadership: [string, string, string][] = [
+  ['Founding Member &amp; Coordinator, EECS Club', 'organised the fest <em>Latency ’25</em> and an Arduino &amp; IoT workshop', '2024 – 2025'],
+  ['Organiser, Throttle-X', 'the first RC car race at IISER Bhopal; core member, CNC club', '2025'],
+  ['UAV Modelling and Flight Control', 'hands-on workshop by IIT Bombay (MeitY SwaYaan), nominated', 'Aug 2026'],
+  ['Autonomous Mobile Robotics Mastery Program', 'MechaMind Labs, 45 days, ROS&nbsp;2 + hardware', 'Jan – Mar 2026'],
+  ['ROSCon India 2025', 'COEP Pune: humanoid robotics workshop, NVIDIA Isaac Sim session', '2025'],
+];
+
+const contact = profile.links.filter((l) => l.href !== profile.cv && l.href !== '/cv/');
+const sections = [
+  { heading: 'Education', entries: education },
+  { heading: 'Research Experience', entries: research },
+  { heading: 'Projects', entries: projects },
+];
+const ext = (href: string) => (href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<Base title={`CV | ${profile.name}`} description={`Curriculum vitae of ${profile.name}.`}>
+  <article class="cv">
+    <header class="cv-head">
+      <h1>{profile.name}</h1>
+      <p class="cv-contact">
+        {contact.map((l, i) => (
+          <>
+            {i > 0 && ' · '}
+            <a href={l.href} {...ext(l.href)}>{l.label}</a>
+          </>
+        ))}
+      </p>
+      {hasCv
+        ? <a class="cv-download" href={profile.cv} download="Prashant_Gupta_CV.pdf">&darr; Download PDF</a>
+        : <span class="meta">PDF version coming soon.</span>}
+    </header>
+
+    {sections.slice(0, 1).map((s) => (
+      <section>
+        <h2>{s.heading}</h2>
+        {s.entries.map((e) => <CvEntry e={e} />)}
+      </section>
+    ))}
+
+    <section>
+      <h2>Publications</h2>
+      <p class="cv-pub">
+        S. Mehndiratta<sup>†</sup>, D. Sood<sup>†</sup>, <strong>P. Gupta</strong><sup>†</sup>, A. Banerjee, A. Sen,
+        “<a href="/projects/coast/"><strong>COAST: Altitude as a Coupled Perception Variable in Shared-Camera Aerial-Ground Tracking</strong></a>,”{' '}
+        <em>IFAC Advances in Control and Optimization of Dynamical Systems (ACODS)</em>, 2026. <strong>Accepted.</strong>
+        <span class="meta"><sup>†</sup>equal contribution · <a href="https://github.com/soododivyam/COAST-code" target="_blank" rel="noopener">code</a></span>
+      </p>
+    </section>
+
+    {sections.slice(1).map((s) => (
+      <section>
+        <h2>{s.heading}</h2>
+        {s.entries.map((e) => <CvEntry e={e} />)}
+      </section>
+    ))}
+
+    <section>
+      <h2>Technical Skills</h2>
+      <dl class="skills">
+        {skills.map(([label, text]) => (
+          <div class="skill-row"><dt class="papertitle" set:html={label} /><dd set:html={text} /></div>
+        ))}
+      </dl>
+    </section>
+
+    <section>
+      <h2>Leadership &amp; Training</h2>
+      <ul class="cv-plain">
+        {leadership.map(([title, text, date]) => (
+          <li class="cv-row">
+            <span><strong set:html={title} />: <Fragment set:html={text} /></span>
+            <span class="cv-date">{date}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</Base>

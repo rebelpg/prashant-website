@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadershipList from '../components/LeadershipList.astro';
+import { leadership } from '../lib/data';
+---
+
+<Base title="Leadership & Community | Prashant Gupta" description="Clubs, events and workshops, with photos and videos.">
+  <article class="project-page">
+    <a class="back" href="/#leadership">&larr; Back to home</a>
+    <h1>Leadership &amp; Community</h1>
+    <p class="summary">Clubs and events I organised, and workshops and conferences I attended, with photos and videos.</p>
+  </article>
+  <LeadershipList groups={leadership} media />
+</Base>

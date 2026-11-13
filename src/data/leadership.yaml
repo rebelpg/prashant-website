@@ -1,0 +1,48 @@
+# Two groups. Each item: title (bold), detail (after a comma, optional), meta (grey second line), date (right side).
+# Optional: links (list of { label, href }), photo ({ file, alt, caption }; file in src/assets/leadership/),
+# video ({ src, poster, caption }; src in public/video/, poster in src/assets/leadership/).
+# Text may contain HTML.
+- heading: Leadership
+  items:
+    - title: Founding Member &amp; Coordinator, EECS Club
+      detail: IISER Bhopal
+      meta: Organised <em>Latency &rsquo;25</em>, the club&rsquo;s fest, and an Arduino &amp; IoT workshop
+      date: 2024&ndash;25
+      photo:
+        file: iot-workshop.jpg
+        alt: "Students around a laptop and electronics kits at the EECS Club Arduino and IoT workshop"
+        caption: "Helping participants at the EECS Club Arduino & IoT workshop, IISER Bhopal."
+    - title: Organiser, Throttle-X
+      detail: the first RC car race at IISER Bhopal
+      meta: Core member, CNC club, IISER Bhopal
+      date: "2025"
+      photo:
+        file: throttle-x.jpg
+        alt: "Organisers and racers with their RC cars in front of the Throttle-X banners at night"
+        caption: "Organisers and racers at Throttle-X, IISER Bhopal, 2025."
+- heading: Selected for / attended
+  items:
+    - title: UAV Modeling and Flight Control, a Hands-on Workshop
+      detail: IIT Bombay
+      meta: >-
+        Nominated &middot; MeitY SwaYaan programme &middot; theme: guidance, navigation and control &middot;
+        held at Fr. C. Rodrigues Institute of Technology, Navi Mumbai &middot; 07&ndash;08 Aug 2026
+      date: Aug 2026
+      links:
+        - { label: certificate, href: /data/certificates/uav-workshop-iitb.pdf }
+      photo:
+        file: iitb-workshop.jpg
+        alt: "Prashant standing beside the Indian Institute of Technology Bombay entrance sign"
+        caption: "IITB workshop: UAV Modeling and Flight Control, MeitY SwaYaan programme, Aug 2026."
+    - title: ROSCon India 2025
+      detail: COEP Pune
+      meta: Humanoid robotics workshop and NVIDIA Isaac Sim session
+      date: "2025"
+      photo:
+        file: roscon-kit.jpg
+        alt: "ROSCon India 2025 Pune delegate kit: notebook, T-shirt, lanyard, pens, stickers and a student badge"
+        caption: "My ROSCon India 2025 delegate kit, Pune."
+      video:
+        src: /video/roscon-digital-twin.mp4
+        poster: roscon-digital-twin.jpg
+        caption: "Trying a robot-arm digital-twin demo at ROSCon India 2025 (9 s, no sound)."

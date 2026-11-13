@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { hasPage } from '../lib/projects';
+
+interface Props { entry: CollectionEntry<'projects'> }
+
+const { entry } = Astro.props;
+const p = entry.data;
+const pageUrl = hasPage(entry) ? `/projects/${entry.id}/` : undefined;
+const links = pageUrl ? [...p.links, { label: 'more', href: pageUrl }] : p.links;
+---
+
+<tr class:list={{ 'highlight-row': p.highlight }}>
+  <td class:list={['thumb-cell', { 'thumb-wide': p.wideThumb }]}>
+    <div class:list={['one', { 'one-wide': p.wideThumb }]}>
+      {p.anim && <div class="two ready"><img src={p.anim} alt="" loading="lazy" /></div>}
+      <Image src={p.thumb} alt={p.thumbAlt} width={p.wideThumb ? 520 : 320} />
+    </div>
+  </td>
+  <td class="text-cell">
+    {pageUrl
+      ? <a href={pageUrl}><span class="papertitle" id={entry.id}>{p.title}</span></a>
+      : <span class="papertitle" id={entry.id}>{p.title}</span>}
+    {p.authors && <><br /><Fragment set:html={p.authors} /></>}
+    {p.venue && <><br /><em>{p.venue}</em></>}
+    {p.stack && <><br /><em>{p.stack}</em>{p.org && `, ${p.org}`}</>}
+    {p.status && <><br /><span class="meta">{p.status}</span></>}
+    {links.length > 0 && (
+      <>
+        <br />
+        {links.map((l, i) => (
+          <>
+            {i > 0 && ' / '}
+            <a href={l.href} {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+          </>
+        ))}
+      </>
+    )}
+    <p set:html={p.summary} />
+  </td>
+</tr>

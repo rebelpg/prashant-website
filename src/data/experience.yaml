@@ -1,0 +1,33 @@
+# Timeline, newest first. logo = file name in src/assets/logos/.
+# Fields: date, logo, logoAlt, title, org (HTML), bullets (list, HTML), text (HTML), meta (grey text, HTML)
+- date: "2026 –"
+  logo: moonlab.png
+  logoAlt: Moon Lab logo
+  title: Undergraduate Researcher
+  org: Moon Lab, IISER Bhopal, with Prof. P. B. Sujit
+  bullets:
+    - '<strong>NIDAR drone challenge (ongoing):</strong> I manage the hardware section of our autonomous multi-drone search-and-rescue team.'
+    - '<strong>Drone hardware:</strong> build, integrate and flight test drones; configure, calibrate and tune Pixhawk flight controllers (ArduPilot and PX4) in QGroundControl.'
+    - '<strong>Robocop (ongoing):</strong> built the mechanical chassis of a four-wheel ground robot: 3D modelling, cutting, drilling and grinding.'
+    - 'Built <a href="#prune-prm">Prune-PRM</a>, a faster motion planner, and an <a href="#atv-sim">off-road ATV simulation</a> that the lab uses as its testbed.'
+- date: "2025"
+  logo: iitbhu.png
+  logoAlt: IIT (BHU) Varanasi logo
+  title: Summer Research Intern
+  page: iit-bhu-internship
+  org: >-
+    Dept. of Electrical Engineering, <a href="https://www.iitbhu.ac.in/" target="_blank" rel="noopener">IIT (BHU) Varanasi</a>,
+    under Dr. Shyam Kamal
+    (<a href="https://drive.google.com/file/d/1dufrGVlph_Wl4TYnVtnpZn8y88wynDSZ/view?usp=drive_link" target="_blank" rel="noopener">report</a>)
+  text: >-
+    Modelled differential-drive kinematics, then wrote PID and LQR controllers in Python for trajectory tracking
+    and tuned them on Quanser QBot hardware. Formulated an MPC controller for constrained motion.
+  meta: June 2025, after my second year
+- date: "2023 –"
+  logo: iiserb.png
+  logoAlt: IISER Bhopal logo
+  title: BS in Engineering Sciences, major in Electrical Engineering and Computer Science
+  org: <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener">IISER Bhopal</a>
+  meta: >-
+    Coursework: Control Systems, Linear Control Systems, Signals &amp; Systems, Data Structures &amp; Algorithms,
+    Machine Learning, Linear Algebra, Intelligent Robotics (audited)

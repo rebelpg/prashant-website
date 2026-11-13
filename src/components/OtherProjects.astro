@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { hasPage } from '../lib/projects';
+
+// One line per project: title (links to its page, or its first link), stack, and a short text.
+interface Props { entries: CollectionEntry<'projects'>[] }
+const { entries } = Astro.props;
+---
+
+<ul class="other-projects">
+  {entries.map((entry) => {
+    const p = entry.data;
+    const href = hasPage(entry) ? `/projects/${entry.id}/` : p.links[0]?.href;
+    const external = href?.startsWith('http');
+    return (
+      <li id={entry.id}>
+        {href
+          ? <a href={href} {...(external ? { target: '_blank', rel: 'noopener' } : {})}><span class="papertitle">{p.title}</span></a>
+          : <span class="papertitle">{p.title}</span>}
+        {p.stack && <> &middot; <em>{p.stack}</em></>}
+        <div class="meta" set:html={p.short ?? p.summary} />
+      </li>
+    );
+  })}
+</ul>

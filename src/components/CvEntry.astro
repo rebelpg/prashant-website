@@ -1,0 +1,41 @@
+---
+// One resume entry on /cv/: title and date, then subtitle and place, then bullets and links.
+export type Entry = {
+  title: string;
+  date: string;
+  sub?: string;
+  place?: string;
+  bullets?: string[];
+  links?: { label: string; href: string }[];
+};
+
+interface Props { e: Entry }
+const { e } = Astro.props;
+const ext = (href: string) => (href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<div class="cv-entry">
+  <div class="cv-row">
+    <span>
+      <strong set:html={e.title} />
+      {e.links && e.links.length > 0 && (
+        <span class="cv-links">
+          {e.links.map((l, i) => (
+            <>
+              {i > 0 && ' / '}
+              <a href={l.href} {...ext(l.href)}>{l.label}</a>
+            </>
+          ))}
+        </span>
+      )}
+    </span>
+    {e.date && <span class="cv-date">{e.date}</span>}
+  </div>
+  {(e.sub || e.place) && (
+    <div class="cv-row cv-sub">
+      <em set:html={e.sub ?? ''} />
+      {e.place && <span>{e.place}</span>}
+    </div>
+  )}
+  {e.bullets && <ul>{e.bullets.map((b) => <li set:html={b} />)}</ul>}
+</div>

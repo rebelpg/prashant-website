@@ -1,53 +1,83 @@
 # Prashant Gupta: personal website
 
-Based on Jon Barron's website template (https://github.com/jonbarron/jonbarron_website).
+Built with [Astro](https://astro.build). Design based on Jon Barron's template
+(https://github.com/jonbarron/jonbarron_website). The output is plain static HTML.
 
-## Add your images
-Put them in the `images/` folder with these names. Any extension works
-(.jpg, .jpeg, .png, .webp, .gif), so only the part before the dot matters.
+## Run locally
+Needs Node.js 22.12 or newer.
 
-| File name   | What to put                                                |
-|-------------|------------------------------------------------------------|
-| `profile`   | Your photo (square-ish, face centred; shown as a circle)    |
-| `coast`     | COAST paper: Gazebo screenshot of the UAV + UGV, or a figure |
-| `moonlab`   | Moon Lab: a drone you work on, or you in the lab             |
-| `prune_prm` | Prune-PRM: roadmap + path plot, or benchmark chart            |
-| `atv_sim`   | Off-road ATV in Gazebo                                        |
-| `qbot`      | IIT BHU internship: QBot hardware or a trajectory plot       |
-| `pgnta`     | PGNTA humanoid robot                                         |
-| `uav_ugv`   | GPS-denied UAV–UGV project: Gazebo/RViz screenshot            |
-| `amr`       | Autonomous Mobile Robot (Mechamind Labs)                     |
-| `scout`     | Scout surveillance UGV                                       |
+    npm install      # first time only
+    npm run dev      # http://localhost:4321, reloads when you save
+    npm start        # same, and opens the browser
+    npm run build    # makes the final site in dist/
+    npm run preview  # serves dist/ to check the final site
 
-Optional hover animations: add a GIF named `<name>_anim.gif`
-(e.g. `pgnta_anim.gif`, `coast_anim.gif`). It plays when someone hovers over that row.
+## Where things are
 
-Missing images show a grey labelled placeholder, so nothing breaks.
+| What you want to change         | File                                   |
+|---------------------------------|----------------------------------------|
+| Intro text, links, research line | `src/data/profile.yaml`               |
+| News                            | `src/data/news.yaml`                   |
+| Experience timeline             | `src/data/experience.yaml`             |
+| Skills                          | `src/data/skills.yaml`                 |
+| Leadership & Community          | `src/data/leadership.yaml`             |
+| Photos in Leadership & Community | `src/assets/leadership/` (shown on `/community/`; the home section title links to it) |
+| Certificates (PDF)              | `public/data/certificates/`            |
+| A project or paper              | `src/content/projects/<name>/index.md` |
+| Logos (timeline)                | `src/assets/logos/`                    |
+| Profile photo                   | `public/profile.jpg`                   |
+| CV                              | `public/data/cv.pdf`                   |
+| Colours, fonts, layout          | `src/styles/global.css`                |
 
-## Add your CV
-Save your resume PDF as `data/cv.pdf`.
+Text in the YAML files may contain HTML (`<a>`, `<strong>`, `<em>`).
+Put quotes around any text that contains `: ` (a colon and a space).
+If a YAML file has a mistake, `npm run dev` and `npm run build` show which file and which line.
 
-## Preview locally
-Needs Node.js (no `npm install` needed, zero dependencies). From this folder run:
+## Add a project
+1. Make a folder: `src/content/projects/<name>/`. The folder name becomes the URL `/projects/<name>/`.
+2. Put a square thumbnail in it, for example `thumb.jpg` (400×400 px is enough).
+3. Make `index.md` in it. Copy the top part from another project and change it:
 
-    npm start        # serves at http://localhost:8000
-    npm run dev      # same, and opens the browser
-    PORT=3000 npm start
+       ---
+       title: "My Project"
+       order: 3            # lower number = higher on the page
+       stack: "ROS 2, Gazebo"
+       org: Moon Lab       # optional
+       status: ongoing     # optional, grey text
+       thumb: ./thumb.jpg
+       thumbAlt: "What the thumbnail shows"
+       links:
+         - { label: code, href: "https://github.com/..." }
+       summary: >-
+         Two or three sentences for the home page.
+       ---
 
-No Node? Use `python3 -m http.server 8000`.
+4. Optional: write more below the `---` line, with photos:
 
-## Dark mode
-A toggle button sits top-right. First visit follows the system setting;
-after a click, the choice is saved in the browser. Colours live as CSS
-variables at the top of `stylesheet.css` (`:root` = light, `[data-theme="dark"]` = dark).
+       ![What the photo shows](./photo1.jpg)
 
-## Later: put it on GitHub
-1. Create a repo named exactly `rebelpg.github.io`.
-2. Upload everything in this folder (including the hidden `.nojekyll` file).
-3. Settings → Pages → Deploy from branch → `main` / root.
-Your site will be at https://rebelpg.github.io
+   When there is text below the `---` line, the home page links the title to the project page.
+   Keep each photo below about 1600 px wide.
 
-## TODOs in index.html
-- Paper PDF / arXiv links (search for "TODO")
-- Prune-PRM code link
-- Google Scholar link (search for "TODO")
+Long page for an Experience item: make a project folder with `kind: experience`. It is not listed on the
+home page; it is served at `/experience/<name>/`. Then add `page: <name>` to that item in `src/data/experience.yaml`
+(example: `src/content/projects/iit-bhu-internship/`).
+
+Other fields: `kind: paper` (shows under Research), `authors`, `venue`, `highlight: true` (yellow row),
+`wideThumb: true` (keep a wide figure's shape), `anim: /anim/<name>.gif` (a GIF in `public/anim/` that plays on hover).
+
+## Publish on GitHub Pages
+1. Create a repo named exactly `rebelpg.github.io` and push this folder to its `main` branch.
+2. On GitHub: Settings → Pages → Source: **GitHub Actions**.
+3. Every push to `main` now builds and publishes the site to https://rebelpg.github.io
+   (see `.github/workflows/deploy.yml`).
+
+## Other folders
+- `originals/`: full-size source images used to make the thumbnails. They are not published.
+- `dist/`: build output. Do not edit; it is made again by every build.
+
+## TODOs
+- Add `public/data/cv.pdf`.
+- COAST paper PDF / arXiv links: `src/content/projects/coast/index.md`.
+- Google Scholar link: `src/data/profile.yaml`.
+- Job line in the intro: `src/data/profile.yaml`.

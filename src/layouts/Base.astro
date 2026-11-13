@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import { profile } from '../lib/data';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = profile.name, description = profile.description } = Astro.props;
+const ogImage = new URL('/profile.jpg', Astro.site).href;
+// Footer date = build date, so it is always current after a deploy
+const updated = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="author" content={profile.name} />
+    <meta name="description" content={description} />
+
+    <!-- Link previews (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:image" content={ogImage} />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+
+    <script is:inline>
+      // Set the theme before the page paints, so there is no white flash in dark mode.
+      // Saved choice wins; otherwise follow the system setting.
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+
+  <body>
+    <Nav />
+    <div class="page">
+      <slot />
+      <p class="footer">
+        Website design from <a href="https://github.com/jonbarron/jonbarron_website" target="_blank" rel="noopener">Jon Barron's source code</a>.
+        Last updated {updated}.
+      </p>
+    </div>
+  </body>
+</html>
