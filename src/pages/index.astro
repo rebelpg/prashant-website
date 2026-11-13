@@ -13,9 +13,23 @@ const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.da
 const papers = all.filter((p) => p.data.kind === 'paper');
 const projects = all.filter((p) => p.data.kind === 'project' && p.data.featured);
 const otherProjects = all.filter((p) => p.data.kind === 'project' && !p.data.featured);
+
+// Structured data so search engines know who this page is about
+const iiserb = { '@type': 'CollegeOrUniversity', name: 'IISER Bhopal', url: 'https://www.iiserb.ac.in/' };
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: Astro.site?.href,
+  image: new URL('/profile.jpg', Astro.site).href,
+  jobTitle: 'Undergraduate Researcher, Robotics and Control',
+  affiliation: [iiserb, { '@type': 'ResearchOrganization', name: 'Moon Lab', parentOrganization: iiserb }],
+  sameAs: profile.links.filter((l) => /github\.com|linkedin\.com/.test(l.href)).map((l) => l.href),
+};
 ---
 
-<Base>
+<Base title={`${profile.name} – Robotics & Control | IISER Bhopal`}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(person)} />
   <!-- Intro -->
   <table class="block"><tbody>
     <tr>

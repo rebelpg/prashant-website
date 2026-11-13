@@ -30,6 +30,7 @@ const updated = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'n
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
     <meta property="og:image" content={ogImage} />
 
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
 
     <script is:inline>
@@ -42,6 +43,9 @@ const updated = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'n
         document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
       })();
     </script>
+
+    <!-- Extra head tags from a page, e.g. structured data on the home page -->
+    <slot name="head" />
   </head>
 
   <body>
